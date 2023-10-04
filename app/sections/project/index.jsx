@@ -64,7 +64,7 @@ export function ProjectsSection() {
                 <div className="flex justify-center my-10">
                   <div className="flex gap-4 ">
 					{
-						item.toolbar.map((data,i)=> <span className="bg-[#484A59] p-2 rounded-lg">{data}</span>)
+						item.toolbar.map((data,i)=> <span key={i} className="bg-[#484A59] p-2 rounded-lg">{data}</span>)
 					}
                    
                 
