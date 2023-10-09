@@ -16,10 +16,22 @@ export function WelcomeSection() {
 	const isInView = useInView(ref, { once: true });
 	const { scrollToEl } = useScrollTo();
 	const isTabletUp = useMediaQuery("min-width: 768px");
-
+	const handleDownload = () => { 
+        // using Java Script method to get PDF file 
+        fetch('cv.pdf').then(response => { 
+            response.blob().then(blob => { 
+                // Creating new object of PDF file 
+                const fileURL = window.URL.createObjectURL(blob); 
+                // Setting various property values 
+                let alink = document.createElement('a'); 
+                alink.href = fileURL; 
+                alink.download = 'SamplePDF.pdf'; 
+                alink.click(); 
+            }) 
+        }) 
+    } 
 	let [count, setCount] = useState(0);
 	const [text] = useState([
-		"build Flutter apps for Android/iOS",
 		"convert design into modern UI",
 		"build interactive UI using React",
 		"develop websites using Next.js"
@@ -115,7 +127,7 @@ export function WelcomeSection() {
 						>
 							<Link
 								href="#projects"
-								onClick={onClick}
+								onClick={handleDownload}
 								tabIndex="0"
 								className="btn"
 								aria-label="Latest projects"
@@ -130,9 +142,9 @@ export function WelcomeSection() {
 					</FacebookProvider>
 				</div> */}
 					<div>
-						<div className=" w-[30rem] h-[30rem]  overflow-hidden flex justify-end items-start p-10  bg-green-100 rounded-full">
+						<div className=" sm:w-[30rem] sm:h-[30rem]  overflow-hidden flex justify-end items-start p-10  bg-green-100 rounded-full">
 
-							<div className="w-[30rem]  bg-red-600 h-[30rem]   a rounded-full">
+							<div className="sm:w-[30rem]  bg-red-600 sm:h-[30rem]   a rounded-full">
 								<img src="../p.jpg" className=" object-cover  w-full h-full  rounded-full" />
 							</div>
 						</div>

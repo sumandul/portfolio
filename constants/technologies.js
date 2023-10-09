@@ -12,6 +12,10 @@ import JiraIcon from "public/assets/svg/jira.svg";
 import HeadlessUiIcon from "public/assets/svg/headlessui.svg";
 import MuiIcon from "public/assets/svg/mui.svg";
 import ChakraIcon from "public/assets/svg/chakraui.svg";
+import DataBase from "public/assets/svg/db1.svg";
+import DataBaseS from "public/assets/svg/db2.svg";
+import Node from "public/assets/svg/node.svg";
+import Express from "public/assets/svg/ex.svg";
 import StyledIcon from "public/assets/svg/styledcomponents.svg";
 
 export const TECHNOLOGIES = [
@@ -36,17 +40,16 @@ export const TECHNOLOGIES = [
 	{
 		category: "	Backend-Skill",
 		items: [
-			{ name: "Figma", icon: <FaFigma size={32} /> },
-			{ name: "Zeplin", icon: <ZeplinIcon width={36} /> },
-			{ name: "XD", icon: <AdobeXDIcon width={32} /> }
+			{ name: "Node JS", icon: <Node size={56} /> },
+			{ name: "Express", icon: <Express width={36} /> },
 		]
 	},
 	{
 		category: "DataBase(DB)",
 		items: [
-			{ name: "Figma", icon: <FaFigma size={32} /> },
-			{ name: "Zeplin", icon: <ZeplinIcon width={36} /> },
-			{ name: "XD", icon: <AdobeXDIcon width={32} /> }
+			{ name: "MangooDB", icon: <DataBase size={32} /> },
+			{ name: "mysql", icon: <DataBaseS width={50} /> },
+			{ name: "Redis", icon: <AdobeXDIcon width={32} /> }
 		]
 	},
 	{

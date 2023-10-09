@@ -32,10 +32,17 @@ export function ProjectsSection() {
 	  link:"https://www.salesberry.com.np/"
     },
     {
+      title: "RealState",
+      src: "../lal1.png",
+	  toolbar:["React","Next JS" ,"Redex JS","CSS","Bootstrap"],
+	  link:"https://lalpurja.vercel.app/"
+    },
+ 
+    {
       title: "FoodMenu",
       src: "../fo.png",
 	  toolbar:["React","Next JS" ,"Redex JS","Tailwind"],
-	  link:"https://www.salesberry.com.np/"
+	  link:"https://food-hithub-io.vercel.app/"
     },
     {
       title: "IdeaForNepal",

@@ -23,7 +23,7 @@ export function AppFooter() {
 				<div className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-5">
 					<p className="font-light">Copyright &copy; {year} Vasile Novatchii</p>
 					<ScrollTop />
-					<ConnectMedia />
+					{/* <ConnectMedia /> */}
 				</div>
 			</footer>
 		</LazyMotion>

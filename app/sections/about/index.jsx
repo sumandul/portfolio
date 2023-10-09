@@ -54,7 +54,7 @@ export function AboutSection() {
 
 				<TimeLine />
 			</section> */}
-			<div className="  grid grid-cols-2">
+			<div className="  grid sm:grid-cols-2  gap-y-20 sm:gap-y-0">
 				<div className=" border-l-[2px]  px-8   border-[#44B24A]">
 					<div>
 						<h2 className="  font-bold text-2xl">My Experience</h2>
