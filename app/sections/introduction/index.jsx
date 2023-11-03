@@ -7,7 +7,6 @@ import { LazyMotion, domAnimation, useInView } from "framer-motion";
 import { WelcomeAnimation } from "./IntroAnimation";
 import { useScrollTo } from "hooks";
 import { FacebookProvider, CustomChat } from 'react-facebook';
-
 import { useMediaQuery } from "utils";
 
 export function WelcomeSection() {
@@ -55,6 +54,15 @@ export function WelcomeSection() {
 		<LazyMotion features={domAnimation}>
 			<section id="intro" className="section" ref={introRef}>
 				<div className="grid grid-cols-1 md:grid-cols-[1fr_0.5fr] lg:grid-cols-[1fr_0.7fr] gap-4 items-center">
+				{/* <div>
+						<div className=" block  sm:hidden w-[20rem] h-[20rem]  ">
+
+							<div className="w-[20rem] h-[20rem]  ">
+								<img src="../p.jpg" className="  object-contain  w-full h-full  rounded-full" />
+							</div>
+						</div>
+
+					</div> */}
 					<div className="py-5 md:py-10">
 						<h1
 							tabIndex="0"
@@ -141,8 +149,8 @@ export function WelcomeSection() {
 						<CustomChat    pageId="126124160589641" minimized={true} />
 					</FacebookProvider>
 				</div> */}
-					<div>
-						<div className=" sm:w-[30rem] sm:h-[30rem]  overflow-hidden flex justify-end items-start p-10  bg-green-100 rounded-full">
+					<div className="hidden sm:block">
+						<div className="  sm:w-[30rem] sm:h-[30rem]  overflow-hidden flex justify-end items-start p-10  bg-green-100 rounded-full">
 
 							<div className="sm:w-[30rem]  bg-red-600 sm:h-[30rem]   a rounded-full">
 								<img src="../p.jpg" className=" object-cover  w-full h-full  rounded-full" />

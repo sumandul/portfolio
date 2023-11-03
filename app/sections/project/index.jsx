@@ -20,8 +20,19 @@ export function ProjectsSection() {
     infinite: true,
     speed: 500,
     slidesToShow: 2,
-	margin:30,
-    slidesToScroll: 1
+    margin: 10,
+    slidesToScroll: 1,
+    // autoplay: true, // Add autoplay option
+    autoplaySpeed: 3000, // Set the autoplay speed in milliseconds (adjust as needed)
+    responsive: [
+      {
+        breakpoint: 768, // Set a breakpoint where you want to change the number of slides shown
+        settings: {
+          slidesToShow: 1, // Set the number of slides to show at this breakpoint
+        },
+      },
+      // Add more breakpoints and settings as needed
+    ],
   };
 
   const projects = [
@@ -61,7 +72,7 @@ export function ProjectsSection() {
         <Slider {...settings}>
           {projects.map((item, i) => (
             <div key={i}>
-              <div className="border-green-500 mx-10 bg-[#2D2C3B] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden p-12 hover:bg-green-100 transform duration-300 shadow-2xl">
+              <div className="border-green-500 sm:mx-10 bg-[#2D2C3B] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden p-12 hover:bg-green-100 transform duration-300 shadow-2xl">
                 <div className="bg-black">
                   <img src={item.src} alt={item.title} />
                 </div>
