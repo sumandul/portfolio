@@ -144,7 +144,7 @@ export function WelcomeSection() {
 							</Link>
 						</div>
 					</div>
-					<div className="">
+					<div className="  absolute bottom-0 right-0">
 				<FacebookProvider appId="722685486336368" chatSupport>
 						<CustomChat    pageId="126124160589641" minimized={true} />
 					</FacebookProvider>
