@@ -4,187 +4,196 @@ import { useEffect, useState, useRef } from "react";
 import { HiDocumentArrowDown } from "react-icons/hi2";
 import Link from "next/link";
 import { LazyMotion, domAnimation, useInView } from "framer-motion";
-import { WelcomeAnimation } from "./IntroAnimation";
+import { SOCIAL_MEDIA } from "../../../constants";
 import { useScrollTo } from "hooks";
-import { FacebookProvider, CustomChat } from 'react-facebook';
+import { FacebookProvider, CustomChat } from "react-facebook";
 import { useMediaQuery } from "utils";
 
 export function WelcomeSection() {
-	const ref = useRef(null);
-	const introRef = useRef(null);
-	const isInView = useInView(ref, { once: true });
-	const { scrollToEl } = useScrollTo();
-	const isTabletUp = useMediaQuery("min-width: 768px");
-	const handleDownload = () => { 
-        // using Java Script method to get PDF file 
-        fetch('cv.pdf').then(response => { 
-            response.blob().then(blob => { 
-                // Creating new object of PDF file 
-                const fileURL = window.URL.createObjectURL(blob); 
-                // Setting various property values 
-                let alink = document.createElement('a'); 
-                alink.href = fileURL; 
-                alink.download = 'SamplePDF.pdf'; 
-                alink.click(); 
-            }) 
-        }) 
-    } 
-	let [count, setCount] = useState(0);
-	const [text] = useState([
-		"convert design into modern UI",
-		"build interactive UI using React",
-		"develop websites using Next.js"
-	]);
+  const ref = useRef(null);
+  const introRef = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const { scrollToEl } = useScrollTo();
+  const isTabletUp = useMediaQuery("min-width: 768px");
+  const handleDownload = () => {
+    // using Java Script method to get PDF file
+    fetch("cv.pdf").then((response) => {
+      response.blob().then((blob) => {
+        // Creating new object of PDF file
+        const fileURL = window.URL.createObjectURL(blob);
+        // Setting various property values
+        let alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download = "SamplePDF.pdf";
+        alink.click();
+      });
+    });
+  };
+  let [count, setCount] = useState(0);
+  const [text] = useState([
+    "convert design into modern UI",
+    "build interactive UI using React",
+    "develop websites using Next.js",
+  ]);
 
-	const onClick = (e) => scrollToEl(e);
+  const onClick = (e) => scrollToEl(e);
 
-	useEffect(() => {
-		let interval = setInterval(() => {
-			setCount(count + 1);
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setCount(count + 1);
 
-			if (count === 3) {
-				setCount(0);
-			}
-		}, 2000);
+      if (count === 3) {
+        setCount(0);
+      }
+    }, 2000);
 
-		return () => clearInterval(interval);
-	}, [count]);
+    return () => clearInterval(interval);
+  }, [count]);
 
-	return (
-		<LazyMotion features={domAnimation}>
-			<section id="intro" className="section" ref={introRef}>
-				<div className="grid grid-cols-1 md:grid-cols-[1fr_0.5fr] lg:grid-cols-[1fr_0.7fr] gap-4 items-center">
-				{/* <div>
-						<div className=" block  sm:hidden w-[20rem] h-[20rem]  ">
+  return (
+    <LazyMotion features={domAnimation}>
+      <section id="intro" className="section" ref={introRef}>
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_0.5fr] lg:grid-cols-[1fr_0.7fr] gap-4 items-center">
+          <div className="py-5 md:py-10">
+            <h1
+              tabIndex="0"
+              ref={ref}
+              className="text-3xl md:text-5xl xl:text-6xl font-bold"
+              style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+              }}
+            >
+              <p>
+                Hi, I&apos;m <mark>suman dulal</mark> a <mark>passionate</mark>{" "}
+                Web developer.
+              </p>
+            </h1>
 
-							<div className="w-[20rem] h-[20rem]  ">
-								<img src="../p.jpg" className="  object-contain  w-full h-full  rounded-full" />
-							</div>
-						</div>
+            <div className="mt-3 relative flex flex-col overflow-hidden">
+              <p
+                ref={ref}
+                className="text-[17px] md:text-2xl transform-none opacity-100"
+                style={{
+                  transform: isInView ? "none" : "translateX(-200px)",
+                  opacity: isInView ? 1 : 0,
+                  transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+                }}
+              >
+                I
+                <span
+                  className="absolute flex flex-col transition-all duration-500 ease-in-expo"
+                  style={{
+                    top:
+                      count === 0
+                        ? "0"
+                        : count === 1
+                        ? "-100%"
+                        : count === 2
+                        ? "-200%"
+                        : count === 3
+                        ? "-300%"
+                        : "0",
+                    left: "13px",
+                  }}
+                >
+                  {text.map((element) => (
+                    <TextElement key={element} element={element} />
+                  ))}
+                </span>
+              </p>
+            </div>
 
-					</div> */}
-					<div className="py-5 md:py-10">
-						<h1
-							tabIndex="0"
-							ref={ref}
-							className="text-3xl md:text-5xl xl:text-6xl font-bold"
-							style={{
-								transform: isInView ? "none" : "translateX(-200px)",
-								opacity: isInView ? 1 : 0,
-								transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-							}}
-						>
-							<p>
-								Hi, I&apos;m <mark>suman dulal</mark> a <mark>passionate</mark> Web developer.
-							</p>
-						</h1>
+            <p
+              tabIndex="0"
+              ref={ref}
+              className="mt-3 mb-10 text-gray-500 text-xl"
+              style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+              }}
+            >
+              Stick around to see some of my work.
+            </p>
+            <div
+              ref={ref}
+              style={{
+                transform: isInView ? "none" : "translateY(50px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+              }}
+            >
+              <Link
+                href="#projects"
+                onClick={handleDownload}
+                tabIndex="0"
+                className="btn"
+                aria-label="Latest projects"
+              >
+                <HiDocumentArrowDown className=" text-xl mr-2" />
+                Download CV
+              </Link>
+            </div>
+            <ul className="  flex   mt-8 items-center gap-5">
+              {SOCIAL_MEDIA.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    aria-label={item.title}
+                    title={item.title}
+                    className="text-2xl text-[#44B24A]"
+                  >
+                    {item.icon}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="  absolute bottom-0 right-0">
+            <FacebookProvider appId="722685486336368" chatSupport>
+              hello
+              <CustomChat pageId="126124160589641" minimized={true} />
+            </FacebookProvider>
+          </div>
+          <div className="hidden sm:block">
+            <div className="  sm:w-[30rem] sm:h-[30rem]  overflow-hidden flex justify-end items-start p-10  bg-green-100 rounded-full">
+              <div className="sm:w-[30rem]  sm:h-[30rem]   a rounded-full">
+                <img
+                  src="../p.jpg"
+                  className=" object-cover  w-full h-full  rounded-full"
+                />
+              </div>
+            </div>
+          </div>
 
-						<div className="mt-3 relative flex flex-col overflow-hidden">
-							<p
-								ref={ref}
-								className="text-[17px] md:text-2xl transform-none opacity-100"
-								style={{
-									transform: isInView ? "none" : "translateX(-200px)",
-									opacity: isInView ? 1 : 0,
-									transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-								}}
-							>
-								I
-								<span
-									className="absolute flex flex-col transition-all duration-500 ease-in-expo"
-									style={{
-										top:
-											count === 0
-												? "0"
-												: count === 1
-													? "-100%"
-													: count === 2
-														? "-200%"
-														: count === 3
-															? "-300%"
-															: "0",
-										left: "13px"
-									}}
-								>
-									{text.map((element) => (
-										<TextElement key={element} element={element} />
-									))}
-								</span>
-							</p>
-						</div>
-
-						<p
-							tabIndex="0"
-							ref={ref}
-							className="mt-3 mb-10 text-gray-500 text-xl"
-							style={{
-								transform: isInView ? "none" : "translateX(-200px)",
-								opacity: isInView ? 1 : 0,
-								transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-							}}
-						>
-							Stick around to see some of my work.
-						</p>
-						<div
-							ref={ref}
-							style={{
-								transform: isInView ? "none" : "translateY(50px)",
-								opacity: isInView ? 1 : 0,
-								transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-							}}
-						>
-							<Link
-								href="#projects"
-								onClick={handleDownload}
-								tabIndex="0"
-								className="btn"
-								aria-label="Latest projects"
-							>
-								<HiDocumentArrowDown className=" text-xl mr-2" />Download CV
-							</Link>
-						</div>
-					</div>
-					<div className="  absolute bottom-0 right-0">
-				<FacebookProvider appId="722685486336368" chatSupport>
-						<CustomChat    pageId="126124160589641" minimized={true} />
-					</FacebookProvider>
-				</div>
-					<div className="hidden sm:block">
-						<div className="  sm:w-[30rem] sm:h-[30rem]  overflow-hidden flex justify-end items-start p-10  bg-green-100 rounded-full">
-
-							<div className="sm:w-[30rem]  sm:h-[30rem]   a rounded-full">
-								<img src="../p.jpg" className=" object-cover  w-full h-full  rounded-full" />
-							</div>
-						</div>
-
-
-					</div>
-
-					{/* {isTabletUp && <WelcomeAnimation />} */}
-				</div>
-			</section>
-		</LazyMotion>
-	);
+          {/* {isTabletUp && <WelcomeAnimation />} */}
+        </div>
+      </section>
+    </LazyMotion>
+  );
 }
 
 function TextElement({ element }) {
-	const firstWord = <b>{element.split(" ").at(0)}</b>;
-	const restWords = element.split(" ").slice(1).join(" ");
-	const ref = useRef(null);
-	const isInView = useInView(ref, { once: true });
+  const firstWord = <b>{element.split(" ").at(0)}</b>;
+  const restWords = element.split(" ").slice(1).join(" ");
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
-	return (
-		<span
-			tabIndex="0"
-			ref={ref}
-			className="text-[17px] md:text-2xl"
-			style={{
-				transform: isInView ? "none" : "translateX(-200px)",
-				opacity: isInView ? 1 : 0,
-				transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-			}}
-		>
-			{firstWord} {restWords}
-		</span>
-	);
+  return (
+    <span
+      tabIndex="0"
+      ref={ref}
+      className="text-[17px] md:text-2xl"
+      style={{
+        transform: isInView ? "none" : "translateX(-200px)",
+        opacity: isInView ? 1 : 0,
+        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+      }}
+    >
+      {firstWord} {restWords}
+    </span>
+  );
 }

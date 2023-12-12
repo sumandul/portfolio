@@ -16,13 +16,16 @@ const url = `${process.env.NEXT_PUBLIC_SANITY_URL}${process.env.NEXT_PUBLIC_SANI
 
 export function ProjectsSection() {
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 2,
     margin: 10,
+    arrows: false,
     slidesToScroll: 1,
-    // autoplay: true, // Add autoplay option
+    nextArrow: false, // Remove the default next arrow
+    prevArrow: false, // Remove the default prev arrow
+    autoplay: true, // Add autoplay option
     autoplaySpeed: 3000, // Set the autoplay speed in milliseconds (adjust as needed)
     responsive: [
       {
@@ -77,15 +80,13 @@ export function ProjectsSection() {
                   <img src={item.src} alt={item.title} />
                 </div>
                 <h3 className="text-green-500 text-center font-bold text-2xl mt-10">
-                  E-{item.title}
+                  {item.title}
                 </h3>
                 <div className="flex justify-center my-10">
-                  <div className="flex gap-4 ">
+                  <div className="flex gap-4  flex-wrap">
 					{
 						item.toolbar.map((data,i)=> <span key={i} className="bg-[#484A59] p-2 rounded-lg">{data}</span>)
 					}
-                   
-                
                   </div>
                 </div>
                 <div className="flex justify-between items-center">
