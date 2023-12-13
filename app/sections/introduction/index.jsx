@@ -66,8 +66,8 @@ export function WelcomeSection() {
               }}
             >
               <p>
-                Hi, I&apos;m <mark>suman dulal</mark> a <mark>passionate</mark>{" "}
-                Web developer.
+                Hello, I&apos;m <mark>suman dulal</mark> a{" "}
+                <mark>passionate</mark> Web developer.
               </p>
             </h1>
 
@@ -152,7 +152,7 @@ export function WelcomeSection() {
               ))}
             </ul>
           </div>
-          <div className="  absolute bottom-0 right-0">
+          <div className="    absolute bottom-0 right-0">
             <FacebookProvider appId="722685486336368" chatSupport>
               <CustomChat pageId="126124160589641" minimized={true} />
             </FacebookProvider>
